@@ -1,24 +1,36 @@
 #include <iostream>
-#include "BankAccount.h"
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+void switch_array(char arr1 [], int b1, int b2)
 {
-int number;
-cout<<"======> Welcome to FCI Banking Application <========="<<endl;
-cout<<"1. Create a New Account"<<endl;
-cout<<"2. List Clients and Accounts"<<endl;
-cout<<"3. Withdraw Money"<<endl;
-cout<<"4. Deposit Money"<<endl;
-cout<<"5 .Exit "<<endl;
+    char temp;
+    if (b1 >= b2)
+        cout << "The array after switch is : " << arr1 << endl;
+    else
+    {
+        temp = arr1[b1];
+        arr1[b1] = arr1[b2];
+        arr1[b2] = temp;
+        switch_array(arr1, b1+1, b2-1);
+    }
+}
+void switch_string(string a , int b3 , int b4){
+int len= a.length();
+char newarray[len];
+strcpy(newarray,a.c_str());
+switch_array(newarray, b3 , b4);
 
-while(cin>>number){
-bankApplication app;
-if(number==1){ app.set_account();}
-if(number==2){  app.listclients();}
-if(number==3){ app.withdraw();}
-if(number==4){ app.deposit();}
-if(number==5){break;}
+
 
 }
+int main()
+{
+    char arr[6] {'A', 'B', 'C', 'D', 'E','\0'};
+    string arrs = "abcde";
+    switch_array(arr, 1, 4);
+    switch_string(arrs,1,4);
+
+
+    return 0;
 }
